@@ -10,6 +10,9 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+.prueba{
+  opacity: 0;
+}
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -11686,3 +11689,4 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
+

@@ -13,7 +13,6 @@
         try {
             $this->conect = new PDO($connectionString,$this->user,$this->pass);
             $this->conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // echo "Conexión exitosa";
         } catch (Exception $e) {
             $this->conect = 'Connected Failed';
             echo "ERROR: ". $e->getMessage();
@@ -23,6 +22,11 @@
     public function connect()
     {
         return $this->conect;
+    }
+
+    public function recorrer($y)
+    {
+        return maysqli_fetch_array($y);
     }
 }
 

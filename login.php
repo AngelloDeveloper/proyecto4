@@ -1,3 +1,17 @@
+<?php 
+     require('app/conexion/connection.php');
+     require('app/assets/models/class/user.php');
+
+     $objUser = new user();
+
+    if(isset($_POST['log_in_afi'])) {
+       $result = $objUser->loginUser($_POST['email'], $objUser->encrypt($_POST['password']));
+       if($result == false) {
+           echo 'contraseña o password incorrectos, por favor volver a intentarlo';
+       }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,21 +36,21 @@
                                     <div class="card-body">
                                         <form action="login.php" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" id="inputEmail" name="email" type="email" placeholder="name@example.com" required/>
                                                 <label for="inputEmail">Dirección de correo electrónico</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                <input class="form-control" id="inputPassword" name="password" type="password" placeholder="Password" required/>
                                                 <label for="inputPassword">Contraseña</label>
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" required/>
                                                 <label class="form-check-label" for="inputRememberPassword">Recordar contraseña</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0 row">
                                                 <a class="small col-md-6" href="password.html">¿Has olvidado tu contraseña?</a>
+                                                <input type="hidden" name="log_in_afi" value="true">
                                                 <input class="btn btn-primary col-md-5" type="submit" value="Iniciar Sesión">
-                                                <!-- <a class="btn btn-primary" href="index.php">Iniciar Sesión</a> -->
                                             </div>
                                         </form>
                                     </div>
@@ -45,7 +59,6 @@
                                             <a class="col-md-7" href="signup.php">¿Necesitas una cuenta? ¡Inscriberte!</a>
                                             <a class="col-md-3" href="index.php">Ir a inicio</a>
                                         </div>
-                                      
                                     </div>
                                 </div>
                             </div>

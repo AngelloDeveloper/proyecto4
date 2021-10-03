@@ -1,3 +1,15 @@
+
+<?php 
+    session_start();
+    if(isset($_GET['logout'])) {
+        require('app/conexion/connection.php');
+        require('app/assets/models/class/user.php');
+
+        $objUser = new user();
+        $objUser->logout();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +44,7 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a href="dashboard.php?logout=true" class="dropdown-item">Logout</a></li>
                     </ul>
                 </li>
             </ul>
